@@ -42,7 +42,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,12 +75,24 @@
     }
 
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS()) //IOS, Android, Web
+      document.getElementById("language").append(liff.getLanguage()) //Default Lang
+      document.getElementById("version").append(liff.getVersion()) //Liff Version
+      document.getElementById("accessToken").append(liff.getAccessToken()) //Token
+      document.getElementById("isInClient").append(liff.isInClient()) //Is inLine or external browser
+      if(liff.isInClient()) {
+        document.getElementById("btnMsg").style.display = 'none'
+      } else {
+        document.getElementById("btnMsg").style.display = 'none'
+        document.getElementById("btnScanCode").style.display = 'none'
+        document.getElementById("btnClose").style.display = 'none'
+      }
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      await liff.init({ liffId: "2005625262-4B3NjJMX" })
+      getEnvironment()
+
       // getUserProfile()
       // getContext()
       // getFriendship()
