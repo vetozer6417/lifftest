@@ -67,6 +67,11 @@
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship()
+      liff.getElementById("friendship").append(friend.friendFlag)
+      // if(!friend.friendFlag) {
+      //   window.location = "https://line.me/id...."
+      // }
     }
 
     async function sendMsg() {
